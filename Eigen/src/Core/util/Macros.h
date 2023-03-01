@@ -1196,6 +1196,7 @@ namespace Eigen {
   #define EIGEN_USING_STD(FUNC) using std::FUNC;
 #endif
 
+/*
 #if EIGEN_COMP_MSVC_STRICT && (EIGEN_COMP_MSVC < 1900 || EIGEN_COMP_NVCC)
   // For older MSVC versions, as well as when compiling with NVCC, using the base operator is necessary,
   //   otherwise we get duplicate definition errors
@@ -1210,7 +1211,7 @@ namespace Eigen {
     EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived& operator=(const Derived& other) { Base::operator=(other); return *this; } \
     template <typename OtherDerived> \
     EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived& operator=(const DenseBase<OtherDerived>& other) { Base::operator=(other.derived()); return *this; }
-#else
+#else*/
   #define EIGEN_INHERIT_ASSIGNMENT_EQUAL_OPERATOR(Derived) \
     using Base::operator =; \
     EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived& operator=(const Derived& other) \
@@ -1218,7 +1219,7 @@ namespace Eigen {
       Base::operator=(other); \
       return *this; \
     }
-#endif
+//#endif
 
 
 /**
